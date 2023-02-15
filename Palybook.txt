@@ -1,0 +1,16 @@
+---
+- hosts: node //name of the host
+  tasks:
+    - name: to create a file
+      file: dest=/root/index.html state=touch
+    - name: to create content in index.html 
+      file: content="hello world" dest=/root/index.html 
+      notify:
+        - to restart nginx
+    - name: to create a dir
+      file: dest=/root/devops state=directory
+    - name: to install nginx 
+      apt: name=nginx state=latest
+  handlers:
+    - name: to restart nginx
+      service: name=nginx state=restarted
