@@ -1,5 +1,5 @@
 ---
-- hosts: node //name of the host is
+- hosts: node //name of the host is we use
   tasks:
     - name: to create a file
       file: dest=/root/index.html state=touch
